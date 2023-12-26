@@ -1,7 +1,7 @@
 
 .calculator-frame {
     box-sizing: border-box;
-    width: 400px;
+    width: 350px;
     height: auto;
     margin: 0 auto;
     padding: 0;
@@ -11,7 +11,6 @@
 .display-window {
     box-sizing: border-box;
     width: auto;
-    height: 50px;
     padding: 10px;
     display: flex;
     justify-content: flex-end;
@@ -37,10 +36,11 @@
 }
 
 .calculator-button {
+    width: 75px;
+    height: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
     background-color: rgb(60, 161, 161);
     flex-grow: 1;
 }
