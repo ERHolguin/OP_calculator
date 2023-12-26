@@ -5,13 +5,14 @@
     height: auto;
     margin: 0 auto;
     padding: 0;
-    /*border: 2px solid black;*/
+    border: 1px solid gray;
+    border-radius: 15px;
 }
 
 .display-window {
     box-sizing: border-box;
-    width: auto;
-    padding: 10px;
+    width: 100%;
+    padding: 50px;
     display: flex;
     justify-content: flex-end;
     border: 1px solid gray;
@@ -33,6 +34,7 @@
     height: auto;
     padding: 0;
     gap: 1px;
+    padding: 5px;
 }
 
 .calculator-button {
@@ -43,4 +45,5 @@
     align-items: center;
     background-color: rgb(60, 161, 161);
     flex-grow: 1;
+    border-radius: 50%;
 }
