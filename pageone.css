@@ -51,5 +51,6 @@
     flex-grow: 1;
     border-radius: 50%;
     font-size: 25px;
+    cursor: pointer;
     
 }
