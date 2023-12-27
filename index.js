@@ -1,3 +1,6 @@
+const displayedInput = document.getElementById('userInput');
+let calculatorButtons = document.getElementById('calculatorButton');
+
 function add(a, b) {
     return a + b
 }
@@ -32,5 +35,9 @@ function operate(operator, num1, num2) {
     };
 };
 
-//console.log(operate(2, 3))
+function deleteAll() {
+    displayedInput.textContent = '';
+}
+
+
 
