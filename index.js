@@ -1,5 +1,5 @@
 const displayedInput = document.getElementById('userInput');
-let calculatorButtons = document.getElementById('calculatorButton');
+let selectedButton = document.getElementById('calculatorButton');
 
 function add(a, b) {
     return a + b
@@ -39,5 +39,16 @@ function deleteAll() {
     displayedInput.textContent = '';
 }
 
+function buttonSelection() {
+    if(selectedButton.textContent == 'AC') {
+        deleteAll();
+    } else if(selectedButton.textContent == '+' || selectedButton.textContent == '-' || selectedButton.textContent == '*' || selectedButton.textContent == '/' ) {
+        operate();
+    } else {
+        return 'invalid input';
+    };
+};
 
 
+
+selectedButton.addEventListener('click', deleteAll)
