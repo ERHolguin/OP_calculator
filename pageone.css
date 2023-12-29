@@ -41,7 +41,8 @@
     padding: 5px;
 }
 
-.calculator-button {
+.calculator-button,
+#deleteAllButton {
     width: 75px;
     height: 75px;
     display: flex;

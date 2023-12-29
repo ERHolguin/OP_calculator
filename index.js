@@ -1,5 +1,6 @@
 const displayedInput = document.getElementById('userInput');
-let selectedButton = document.getElementById('calculatorButton');
+let clearWindowButton = document.getElementById('deleteAllButton')
+let calculatorButtons = document.querySelectorAll('calculator-button');
 
 function add(a, b) {
     return a + b
@@ -36,19 +37,18 @@ function operate(operator, num1, num2) {
 };
 
 function deleteAll() {
-    displayedInput.textContent = '';
-}
-
-function buttonSelection() {
-    if(selectedButton.textContent == 'AC') {
-        deleteAll();
-    } else if(selectedButton.textContent == '+' || selectedButton.textContent == '-' || selectedButton.textContent == '*' || selectedButton.textContent == '/' ) {
-        operate();
-    } else {
-        return 'invalid input';
-    };
+    displayedInput.innerText = '';  
 };
 
 
+/*function buttonSelection() {
+    displayedInput.textContent = calculatorButtons.textContent; 
+};*/
 
-selectedButton.addEventListener('click', deleteAll)
+calculatorButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(calculatorButtons.innerText); 
+    });
+});
+
+clearWindowButton.addEventListener('click', deleteAll);
