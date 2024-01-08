@@ -42,7 +42,7 @@
 }
 
 .calculator-button,
-#deleteAllButton {
+.clear-button {
     width: 75px;
     height: 75px;
     display: flex;

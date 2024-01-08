@@ -1,6 +1,6 @@
-const displayedInput = document.getElementById('userInput');
-let clearWindowButton = document.getElementById('deleteAllButton')
-let calculatorButtons = document.querySelectorAll('calculator-button');
+let displayedInput = document.getElementById('displayWindowContent');
+let clearWindowButton = document.getElementById('AC')
+let calculatorButtons = document.querySelectorAll('button');
 
 function add(a, b) {
     return a + b
@@ -22,7 +22,7 @@ let num1;
 let num2;
 let operator;
 
-function operate(operator, num1, num2) {
+function operate(num1, operator, num2) {
     if(operator == '+') {
         add(num1, num2);
     } else if(operator == '-') {
@@ -41,13 +41,9 @@ function deleteAll() {
 };
 
 
-/*function buttonSelection() {
-    displayedInput.textContent = calculatorButtons.textContent; 
-};*/
-
 calculatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        console.log(calculatorButtons.innerText); 
+        displayedInput.innerText += ' ' + button.innerText; 
     });
 });
 
