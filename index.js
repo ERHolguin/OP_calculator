@@ -43,23 +43,23 @@ function operate(num1, operator, num2) {
 //console.log(operate(2,'*',4));
 
 
+
+
 numberButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        displayedInput.innerText += ' ' + button.innerText; 
-    });
+    button.addEventListener('click', newInput); 
 });
 
 operationButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        displayedInput.innerText += ' ' + button.innerText; 
-    });
+    button.addEventListener('click', newInput);    
 });
 
 function deleteAll() {  
     displayedInput.innerText = '';  
-    
     };
-    
+
+function newInput(e) {
+    displayedInput.innerText += ' ' + e.target.innerText;
+}
 
 
 clearWindowButton.addEventListener('click', deleteAll);
