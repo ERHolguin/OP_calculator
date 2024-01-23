@@ -21,9 +21,9 @@ function divide(a, b) {
     return a / b;
 }
 
-/*let num1;
-let num2;
-let operator;*/
+let num1 = '';
+let num2 = '';
+let operator = '';
 
 function operate(num1, operator, num2) {
     if (operator == '+') {
@@ -42,28 +42,35 @@ function operate(num1, operator, num2) {
 
 //console.log(operate(2,'*',4));
 
+function numberInput(e) {
+    if(operator === '') {
+        num1 = ' ' + e.target.innerText;
+        return displayedInput.innerText += num1;
+    } else {
+        num2 = ' ' + e.target.innerText;
+        return displayedInput.innerText += num2;
+    }
+};
 
+function operatorInput(e) {
+  operator = ' ' + e.target.innerText;
+  return displayedInput.innerText += operator;
+};
 
-
-numberButtons.forEach((button) => {
-    button.addEventListener('click', newInput); 
-});
-
-operationButtons.forEach((button) => {
-    button.addEventListener('click', newInput);    
-});
 
 function deleteAll() {  
     displayedInput.innerText = '';  
     };
 
-function newInput(e) {
-    displayedInput.innerText += ' ' + e.target.innerText;
-}
-
-
 clearWindowButton.addEventListener('click', deleteAll);
 
+numberButtons.forEach((button) => {
+    button.addEventListener('click', numberInput); 
+});
+
+operationButtons.forEach((button) => {
+    button.addEventListener('click', operatorInput);    
+});
 
 
 // What's next?
