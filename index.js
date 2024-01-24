@@ -1,4 +1,5 @@
 let operationInput = document.getElementById('operationDisplayContent');
+let resultOutput = document.getElementById('resultDisplayContent');
 let clearWindowButton = document.getElementById('AC')
 let backspaceButton = document.getElementById('backspace')
 let numberButtons = document.querySelectorAll('.number-button');

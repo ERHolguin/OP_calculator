@@ -13,14 +13,18 @@
 .operation-display {
     box-sizing: border-box;
     width: 100%;
-    padding: 50px;
-    display: flex;
-    justify-content: flex-end;
+    padding: 25px;
+    display: block;
     border: 1px solid gray;
     border-radius: 15px;
     font-size: 25px;
     font-weight: bold;
     background-color: rgb(143, 183, 185);
+}
+
+
+.result-display-content {
+    padding-top: 0;
 }
 
 .user-input {
