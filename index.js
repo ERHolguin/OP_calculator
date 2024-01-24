@@ -1,4 +1,4 @@
-let displayedInput = document.getElementById('displayWindowContent');
+let operationInput = document.getElementById('operationDisplayContent');
 let clearWindowButton = document.getElementById('AC')
 let backspaceButton = document.getElementById('backspace')
 let numberButtons = document.querySelectorAll('.number-button');
@@ -27,13 +27,13 @@ let operator = '';
 
 function operate(num1, operator, num2) {
     if (operator == '+') {
-        return add(num1, num2);
+        return add(parseInt(num1), parseInt(num2));
     } else if (operator == '-') {
-        return subtract(num1, num2);
+        return subtract(parseInt(num1), parseInt(num2));
     } else if (operator == '*') {
-        return multiply(num1, num2);
+        return multiply(parseInt(num1), parseInt(num2));
     } else if (operator == '/') {
-        return divide(num1, num2);
+        return divide(parseInt(num1), parseInt(num2));
     } else {
         return 'invalid input';
     };
@@ -45,22 +45,23 @@ function operate(num1, operator, num2) {
 function numberInput(e) {
     if(operator === '') {
         num1 = ' ' + e.target.innerText;
-        return displayedInput.innerText += num1;
+        return operationInput.innerText += num1;
     } else {
         num2 = ' ' + e.target.innerText;
-        return displayedInput.innerText += num2;
+        return operationInput.innerText += num2;
     }
 };
 
 function operatorInput(e) {
   operator = ' ' + e.target.innerText;
-  return displayedInput.innerText += operator;
+  return operationInput.innerText += operator;
 };
 
 
 function deleteAll() {  
-    displayedInput.innerText = '';  
-    };
+    operationInput.innerText = '';  
+};
+
 
 clearWindowButton.addEventListener('click', deleteAll);
 
@@ -75,16 +76,6 @@ operationButtons.forEach((button) => {
 
 // What's next?
 
-// when user clicks on a number:
-    // -the 1st click should consider the button's value to be num1
-        // - the display should update to reflect what the user selected
-    // -the 2nd click should consider the button's value to be num2
-        // - the display should update to reflect what the user selected
-
-// when user clicks on an operation button:
-    // -the targetted button's value should be considered as the operation symbol
-        //to execute the operation
-    // -the display should update to reflect what the user selected
 
 //when user clicks on equals button:
     //- the click event should trigger the operate() function
