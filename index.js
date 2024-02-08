@@ -26,53 +26,64 @@ let num1 = '';
 let num2 = '';
 let operator = '';
 
-function operate(num1, operator, num2) {
-    if (operator == '+') {
-        return add(parseInt(num1), parseInt(num2));
-    } else if (operator == '-') {
-        return subtract(parseInt(num1), parseInt(num2));
-    } else if (operator == '*') {
-        return multiply(parseInt(num1), parseInt(num2));
-    } else if (operator == '/') {
-        return divide(parseInt(num1), parseInt(num2));
-    } else {
-        return 'invalid input';
-    };
-};
-
-
-//console.log(operate(2,'*',4));
+function operatorInput(e) {
+    let operator = e.target.innerText;
+    console.log(operator);
+    /*operationInput.innerText += operator;*/
+  };
 
 function numberInput(e) {
     if(operator === '') {
-        num1 = ' ' + e.target.innerText;
-        return operationInput.innerText += num1;
-    } else {
-        num2 = ' ' + e.target.innerText;
-        return operationInput.innerText += num2;
+        num1 = e.target.innerText
+        console.log(num1);
+    } else if(operator != '') {
+        num2 = e.target.innerText;
+        console.log(num2);
     }
-};
+};     
 
-function operatorInput(e) {
-  operator = ' ' + e.target.innerText;
-  return operationInput.innerText += operator;
-};
+
+
+/*function operate(num1, operator, num2) {
+    if (operator == '+') {
+        resultOutput.innerText = add(parseInt(num1), parseInt(num2));
+        console.log(num1, operator, num2);
+        console.log(add(parseInt(num1), parseInt(num2)));
+    } else if (operator == '-') {
+        resultOutput.innerText =  subtract(parseInt(num1), parseInt(num2));
+        console.log(num1, operator, num2);
+        console.log(subtract(parseInt(num1), parseInt(num2)));
+    } else if (operator == 'x') {
+        resultOutput.innerText =  multiply(parseInt(num1), parseInt(num2));
+        console.log(num1, operator, num2);     
+        console.log(multiply(parseInt(num1), parseInt(num2)));
+    } else if (operator == '/') {
+        resultOutput.innerText =  divide(parseInt(num1), parseInt(num2));
+        console.log(num1, operator, num2);
+        console.log(divide(parseInt(num1), parseInt(num2)))
+    } else {
+        resultOutput.innerText = 'invalid input';
+        console.log('Invalid Input')
+    };
+};*/
 
 
 function deleteAll() {  
     operationInput.innerText = '';  
 };
 
-
-clearWindowButton.addEventListener('click', deleteAll);
-
 numberButtons.forEach((button) => {
     button.addEventListener('click', numberInput); 
 });
 
+/*equalsButton.addEventListener('click', operate(operationInput.innerText));*/
+
 operationButtons.forEach((button) => {
     button.addEventListener('click', operatorInput);    
 });
+
+clearWindowButton.addEventListener('click', deleteAll);
+
 
 
 // What's next?

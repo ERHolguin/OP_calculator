@@ -13,7 +13,7 @@
 .operation-display {
     box-sizing: border-box;
     width: 100%;
-    padding: 25px;
+    padding: 50px;
     display: block;
     border: 1px solid gray;
     border-radius: 15px;
@@ -22,9 +22,9 @@
     background-color: rgb(143, 183, 185);
 }
 
-
+.operation-display-content,
 .result-display-content {
-    padding-top: 0;
+    text-align: right;
 }
 
 .user-input {
