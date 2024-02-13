@@ -26,7 +26,7 @@ let num1 = '';
 let num2 = '';
 let operator = '';
 
-function operatorInput(e) {
+/*function operatorInput(e) {
     let operator = e.target.innerText;
     console.log(operator);
     operationInput.innerText += operator;
@@ -41,7 +41,12 @@ function numberInput(e) {
         let num2 = e.target.innerText
        operationInput.innerText += num2
     }  
-};     
+};    */
+
+function userInput(e) {
+    operationInput.innerText += e.target.innerText;
+    console.log(operationInput.innerText)
+}
 
 
 function operate(num1, operator, num2) {
@@ -67,9 +72,14 @@ function operate(num1, operator, num2) {
     };
 };
 
+function getResult() {
+    let splitResult = operationInput.innerText.split(',');
+    resultOutput.innerText = operate(splitResult);
+};
 
 function deleteAll() {  
-    operationInput.innerText = '';  
+    operationInput.innerText = ''; 
+    resultOutput.innerText = '';
 };
 
 function deleteLastInput() {  
@@ -77,13 +87,13 @@ function deleteLastInput() {
 };
 
 numberButtons.forEach((button) => {
-    button.addEventListener('click', numberInput); 
+    button.addEventListener('click', userInput); 
 });
 
-//equalsButton.addEventListener('click', operate(num1, operator, num2));
+equalsButton.addEventListener('click', getResult);
 
 operationButtons.forEach((button) => {
-    button.addEventListener('click', operatorInput);    
+    button.addEventListener('click', userInput);    
 });
 
 clearWindowButton.addEventListener('click', deleteAll);
