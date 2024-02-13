@@ -29,22 +29,22 @@ let operator = '';
 function operatorInput(e) {
     let operator = e.target.innerText;
     console.log(operator);
-    /*operationInput.innerText += operator;*/
+    operationInput.innerText += operator;
   };
 
 function numberInput(e) {
     if(operator === '') {
-        num1 = e.target.innerText
-        console.log(num1);
-    } else if(operator != '') {
-        num2 = e.target.innerText;
-        console.log(num2);
-    }
+        let num1 = e.target.innerText
+        console.log(num1)
+        operationInput.innerText += num1
+    } else {
+        let num2 = e.target.innerText
+       operationInput.innerText += num2
+    }  
 };     
 
 
-
-/*function operate(num1, operator, num2) {
+function operate(num1, operator, num2) {
     if (operator == '+') {
         resultOutput.innerText = add(parseInt(num1), parseInt(num2));
         console.log(num1, operator, num2);
@@ -65,24 +65,31 @@ function numberInput(e) {
         resultOutput.innerText = 'invalid input';
         console.log('Invalid Input')
     };
-};*/
+};
 
 
 function deleteAll() {  
     operationInput.innerText = '';  
 };
 
+function deleteLastInput() {  
+    operationInput.innerText = operationInput.innerText.slice(0, -1);  
+};
+
 numberButtons.forEach((button) => {
     button.addEventListener('click', numberInput); 
 });
 
-/*equalsButton.addEventListener('click', operate(operationInput.innerText));*/
+//equalsButton.addEventListener('click', operate(num1, operator, num2));
 
 operationButtons.forEach((button) => {
     button.addEventListener('click', operatorInput);    
 });
 
 clearWindowButton.addEventListener('click', deleteAll);
+
+backspaceButton.addEventListener('click', deleteLastInput);
+
 
 
 
