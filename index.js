@@ -60,8 +60,8 @@ function operate(num1, operator, num2) {
 function getResult() {
     let operation = operationInput.innerText;
     let [num1, operator, num2] = operation.split(/(\+|-|\x|\÷)/);
-    resultOutput.innerText = operate(num1, operator, num2);
-    return resultOutput.innerText;
+    let result = operate(num1, operator, num2);
+    resultOutput.push(result);
 };
 
 
