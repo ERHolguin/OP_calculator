@@ -10,7 +10,7 @@
     /*background-color: rgb(47, 55, 56);*/
 }
 
-.operation-display {
+.calc-screen {
     box-sizing: border-box;
     width: 100%;
     padding: 50px;
@@ -22,9 +22,10 @@
     background-color: rgb(143, 183, 185);
 }
 
-.operation-display-content,
-.result-display-content {
+.operation-display,
+.result-display {
     text-align: right;
+    min-width: 100%;                
 }
 
 .user-input {
