@@ -25,6 +25,7 @@ function divide(a, b) {
 let num1;
 let num2;
 let operator;
+let result = [resultOutput.innerText]; //var must be an array in order to push results to it
 
 function userInput(e) {
     operationInput.innerText += e.target.innerText;
@@ -60,8 +61,8 @@ function operate(num1, operator, num2) {
 function getResult() {
     let operation = operationInput.innerText;
     let [num1, operator, num2] = operation.split(/(\+|-|\x|\÷)/);
-    let result = operate(num1, operator, num2);
-    resultOutput.push(result);
+    let newResult = operate(num1, operator, num2);
+    return result.push(newResult);
 };
 
 
@@ -99,4 +100,3 @@ backspaceButton.addEventListener('click', deleteLastInput);
 //when user clicks on equals button:
     //- the click event should trigger the operate() function
     // - the click event should also update the display with the results
-
