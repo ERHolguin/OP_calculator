@@ -6,6 +6,11 @@ let numberButtons = document.querySelectorAll('.number-button');
 let operationButtons = document.querySelectorAll('.operation-button');
 let equalsButton = document.getElementById('equals');
 
+let num1;
+let num2;
+let operator;
+let result = [resultOutput.innerText]; //var must be an array in order to push results to it
+
 function add(a, b) {
     return a + b
 };
@@ -22,14 +27,25 @@ function divide(a, b) {
     return a / b;
 };
 
-let num1;
-let num2;
-let operator;
-let result = [resultOutput.innerText]; //var must be an array in order to push results to it
 
-function userInput(e) {
+/*function userInput(e) {
     operationInput.innerText += e.target.innerText;
     console.log(operationInput.innerText);
+};*/
+
+function numberInput(e) {
+    if(operator == '') {
+        num1 = ' ' + e.target.innerText;
+        return operationInput.innerText += num1;
+    } else {
+        num2 = ' ' + e.target.innerText;
+        return operationInput.innerText += num2;
+    }
+};
+
+function operatorInput(e) {
+  operator = ' ' + e.target.innerText;
+  return operationInput.innerText += operator;
 };
 
 
@@ -46,6 +62,8 @@ function operate(num1, operator, num2) {
         resultOutput.innerText =  multiply(parseInt(num1), parseInt(num2));
         console.log(num1, operator, num2);     
         console.log(resultOutput.innerText);
+    } else if (operator == '÷' && num2 == '0') {
+        resultOutput.innerText = 'Are you trying to break me? Better luck next time!';
     } else if (operator == '÷') {
         resultOutput.innerText =  divide(parseInt(num1), parseInt(num2));
         console.log(num1, operator, num2);
@@ -58,11 +76,11 @@ function operate(num1, operator, num2) {
 
 //console.log(operate(2,'+',9));
 
-function getResult() {
+function getFirstResult() {
     let operation = operationInput.innerText;
     let [num1, operator, num2] = operation.split(/(\+|-|\x|\÷)/);
-    let newResult = operate(num1, operator, num2);
-    return result.push(newResult);
+    let firstResult = operate(num1, operator, num2);
+    return result.push(firstResult);
 };
 
 
@@ -76,14 +94,14 @@ function deleteLastInput() {
 };
 
 numberButtons.forEach((button) => {
-    button.addEventListener('click', userInput); 
+    button.addEventListener('click', numberInput); 
 });
 
 operationButtons.forEach((button) => {
-    button.addEventListener('click', userInput);    
+    button.addEventListener('click', operatorInput);    
 });
 
-equalsButton.addEventListener('click', getResult);
+equalsButton.addEventListener('click', getFirstResult);
 
 
 
@@ -97,6 +115,13 @@ backspaceButton.addEventListener('click', deleteLastInput);
 // What's next?
 
 
-//when user clicks on equals button:
-    //- the click event should trigger the operate() function
-    // - the click event should also update the display with the results
+//calcultion rules:
+    // calculate one pair of numbers at a time, display the result, then use the result
+    // as the first number in the new calculation
+
+    // round answers with long decimals so that 
+    // they don’t overflow the screen.
+
+    // pressing = before entering all of the numbers or an operator 
+    // could cause problems!
+    
