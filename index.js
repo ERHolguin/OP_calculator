@@ -33,14 +33,22 @@ function divide(a, b) {
     console.log(operationInput.innerText);
 };*/
 
+function getFirstResult() {
+    let operation = operationInput.innerText;
+    let [num1, operator, num2] = operation.split(/(\+|-|\x|\÷)/);
+    let firstResult = operate(num1, operator, num2);
+    return result.push(firstResult);
+};
+
 function numberInput(e) {
     if(operator == '') {
-        num1 = ' ' + e.target.innerText;
-        return operationInput.innerText += num1;
+        num1 = e.target.innerText;
+        operationInput.innerText += num1;
     } else {
-        num2 = ' ' + e.target.innerText;
-        return operationInput.innerText += num2;
+        num2 = e.target.innerText;
+        operationInput.innerText += num2;
     }
+    getFirstResult();    
 };
 
 function operatorInput(e) {
@@ -68,20 +76,13 @@ function operate(num1, operator, num2) {
         resultOutput.innerText =  divide(parseInt(num1), parseInt(num2));
         console.log(num1, operator, num2);
         console.log(resultOutput.innerText);
-    } else {
+    /*} else {
         resultOutput.innerText = 'invalid input';
-        console.log('Invalid Input');
+        console.log('Invalid Input');*/
     };
 };
 
 //console.log(operate(2,'+',9));
-
-function getFirstResult() {
-    let operation = operationInput.innerText;
-    let [num1, operator, num2] = operation.split(/(\+|-|\x|\÷)/);
-    let firstResult = operate(num1, operator, num2);
-    return result.push(firstResult);
-};
 
 
 function deleteAll() {  
