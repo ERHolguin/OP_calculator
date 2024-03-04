@@ -5,11 +5,13 @@ let backspaceButton = document.getElementById('backspace');
 let numberButtons = document.querySelectorAll('.number-button');
 let operationButtons = document.querySelectorAll('.operation-button');
 let equalsButton = document.getElementById('equals');
+let decimalNumberInput = document.getElementById('dot');
 
 let num1;
 let num2;
 let operator;
 let result = [resultOutput.innerText]; //var must be an array in order to push results to it
+
 
 function add(a, b) {
     return a + b
@@ -35,10 +37,11 @@ function divide(a, b) {
 
 function getFirstResult() {
     let operation = operationInput.innerText;
-    let [num1, operator, num2] = operation.split(/(\+|-|\x|\÷)/);
+    let [num1, operator, num2] = operation.split(/(\.|\+|-|\x|\÷)/);
     let firstResult = operate(num1, operator, num2);
     return result.push(firstResult);
 };
+
 
 function numberInput(e) {
     if(operator == '') {
@@ -46,15 +49,21 @@ function numberInput(e) {
         operationInput.innerText += num1;
     } else {
         num2 = e.target.innerText;
-        operationInput.innerText += num2;
-    }
+        operationInput.innerText += ' ' + num2;
+    };
     getFirstResult();    
 };
 
 function operatorInput(e) {
-  operator = ' ' + e.target.innerText;
-  return operationInput.innerText += operator;
+  operator = e.target.innerText;
+  return operationInput.innerText += ' ' + operator;
 };
+
+function useDecimalNumber(e) {
+    decimalNumberInput = e.target.innerText;
+    return operationInput.innerText += decimalNumberInput;
+};
+
 
 
 function operate(num1, operator, num2) {
@@ -98,13 +107,13 @@ numberButtons.forEach((button) => {
     button.addEventListener('click', numberInput); 
 });
 
+decimalNumberInput.addEventListener('click', useDecimalNumber);
+
 operationButtons.forEach((button) => {
     button.addEventListener('click', operatorInput);    
 });
 
 equalsButton.addEventListener('click', getFirstResult);
-
-
 
 clearWindowButton.addEventListener('click', deleteAll);
 
