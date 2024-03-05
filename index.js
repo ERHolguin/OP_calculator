@@ -5,13 +5,12 @@ let backspaceButton = document.getElementById('backspace');
 let numberButtons = document.querySelectorAll('.number-button');
 let operationButtons = document.querySelectorAll('.operation-button');
 let equalsButton = document.getElementById('equals');
-let decimalNumberInput = document.getElementById('dot');
+let decimalSeparator = document.getElementById('dot');
 
 let num1;
 let num2;
 let operator;
 let result = [resultOutput.innerText]; //var must be an array in order to push results to it
-
 
 function add(a, b) {
     return a + b
@@ -30,16 +29,16 @@ function divide(a, b) {
 };
 
 
-/*function userInput(e) {
-    operationInput.innerText += e.target.innerText;
-    console.log(operationInput.innerText);
-};*/
-
-function getFirstResult() {
+function getResult() {
     let operation = operationInput.innerText;
     let [num1, operator, num2] = operation.split(/(\.|\+|-|\x|\÷)/);
     let firstResult = operate(num1, operator, num2);
     return result.push(firstResult);
+};
+
+function updateOperation() {
+    operationInput.innerText = resultOutput.innerText;
+    resultOutput.innerText = '';
 };
 
 
@@ -49,21 +48,21 @@ function numberInput(e) {
         operationInput.innerText += num1;
     } else {
         num2 = e.target.innerText;
-        operationInput.innerText += ' ' + num2;
+        operationInput.innerText += num2;
     };
-    getFirstResult();    
+    //getFirstResult();  
 };
+
 
 function operatorInput(e) {
   operator = e.target.innerText;
   return operationInput.innerText += ' ' + operator;
 };
 
-function useDecimalNumber(e) {
-    decimalNumberInput = e.target.innerText;
-    return operationInput.innerText += decimalNumberInput;
+function useDecimalSeparator(e) {
+    decimalSeparator = e.target.innerText;
+    return operationInput.innerText += decimalSeparator;
 };
-
 
 
 function operate(num1, operator, num2) {
@@ -85,13 +84,9 @@ function operate(num1, operator, num2) {
         resultOutput.innerText =  divide(parseInt(num1), parseInt(num2));
         console.log(num1, operator, num2);
         console.log(resultOutput.innerText);
-    /*} else {
-        resultOutput.innerText = 'invalid input';
-        console.log('Invalid Input');*/
     };
 };
 
-//console.log(operate(2,'+',9));
 
 
 function deleteAll() {  
@@ -107,13 +102,17 @@ numberButtons.forEach((button) => {
     button.addEventListener('click', numberInput); 
 });
 
-decimalNumberInput.addEventListener('click', useDecimalNumber);
+decimalSeparator.addEventListener('click', useDecimalSeparator);
 
 operationButtons.forEach((button) => {
     button.addEventListener('click', operatorInput);    
 });
 
-equalsButton.addEventListener('click', getFirstResult);
+equalsButton.addEventListener('click', () => {
+    getResult()
+    updateOperation()
+});
+
 
 clearWindowButton.addEventListener('click', deleteAll);
 
